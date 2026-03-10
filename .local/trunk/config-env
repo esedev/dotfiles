@@ -2,13 +2,7 @@
 
 export VISUAL=mtt-editor.sh
 export EDITOR="$VISUAL"
-alias edit=mtt-editor.sh
-
-if [ -f $HOME/.bash_profile ]; then
-    alias refresh-profile='source $HOME/.bash_profile'
-else
-    alias refresh-profile='source $HOME/.profile'
-fi
+alias edit="$VISUAL"
 
 # $PATH update
 case ":${PATH}:" in
@@ -19,10 +13,33 @@ case ":${PATH}:" in
         ;;
 esac
 
-mkdir -p /tmp/$USER
+# refresh profile
+if [ -f $HOME/.bash_profile ]; then
+    alias refresh-profile='source $HOME/.bash_profile'
+else
+    alias refresh-profile='source $HOME/.profile'
+fi
 
+# setup env flags
+for c in emacs eza fastfetch git ruby rustc ; do
+    U=SG_IS_${c^^}
+    command -v $c 2>&1 >/dev/null
+    declare $U=$?
+done
+unset c
+
+# ####
+if [ 0 == $SG_IS_EZA ]; then
+    alias le='eza -l'
+    alias lg='eza --long --grid'
+    alias lt='eza --long --tree'
+fi
+# RUBY
+if [ 0 == $SG_IS_RUBY ]; then
+    alias rhttp='echo "http://localhost:8008" && ruby -run -e httpd -- -p 8008'
+fi
 # RUST
-if command -v rustc 2>&1 >/dev/null; then
+if [ 0 == $SG_IS_RUSTC ]; then
     RUSTC_LIBRARY_PATH=$(rustc --print=target-libdir)
     if ! [[ "$LD_LIBRARY_PATH" =~ "$RUSTC_LIBRARY_PATH" ]]
     then
@@ -36,12 +53,10 @@ if command -v rustc 2>&1 >/dev/null; then
     export LD_LIBRARY_PATH
     export CROSS_ROOTLESS_CONTAINER_ENGINE=1 # use podman for cross build
 fi
-
+# MISC
 if command -v static-web-server 2>&1 >/dev/null ; then
     alias shttp='env SERVER_ROOT=./ static-web-server -p 8008 -z "$@"'
 fi
-
-# MISC
 if command -v mise 2>&1 >/dev/null ; then
     eval "$(mise activate bash)"
 fi
@@ -54,6 +69,3 @@ fi
 if command -v zed 2>&1 >/dev/null ; then
     alias code='zed'
 fi
-
-# FUNNY
-alias wttr='curl wttr.in | tee $SG_SHELF_DIR/weather.txt'
