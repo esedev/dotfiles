@@ -1,0 +1,9 @@
+* About
+A collection of GNU/linux configuration files.
+* Install
++ Move repository to $HOME dir.
+#+begin_src shell
+#+end_src
++ TODO
+#+begin_src shell
+#+end_src
