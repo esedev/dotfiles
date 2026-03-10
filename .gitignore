@@ -3,7 +3,13 @@
 !.gitconfig
 !README.org
 
+# include config directories
+!.config
+!.local
 
+#
+# config files
+#
 !.config/mc
 !.config/mc/ini
 
@@ -13,11 +19,12 @@
 !.config/tmux
 !.config/tmux/**
 
-
-!.local
-
+#
+# include executable files
+#
 !.local/bin
 !.local/bin/mtt-editor.sh
 
+# rest of config files
 !.local/trunk
 !.local/trunk/**
