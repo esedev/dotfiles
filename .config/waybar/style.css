@@ -1,0 +1,27 @@
+@import url("file:///etc/xdg/waybar/style.css");
+
+#clock {
+    background: #000000;
+    color: #00ff00;
+}
+#clock:hover {
+    background-color: #3F2B2E;
+    color: #ff8800;
+}
+
+
+#wireplumber {
+    background-color: #9f80f5;
+    color: #000000;
+}
+#wireplumber.muted {
+    background-color: #f53c3c;
+}
+
+#language {
+    background: #0050ed;
+    color: #ffffff;
+    padding: 0 5px;
+    margin: 0 5px;
+    min-width: 16px;
+}

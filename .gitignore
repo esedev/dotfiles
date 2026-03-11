@@ -8,6 +8,15 @@
 !.local
 
 #
+# niri
+#
+!.config/niri
+!.config/niri/**
+
+!.config/waybar
+!.config/waybar/**
+
+#
 # config files
 #
 !.config/mc
