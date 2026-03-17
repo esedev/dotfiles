@@ -1,39 +1,26 @@
 *
 !.gitignore
-!.gitconfig
 !README.org
+!.stowrc
 
-# include config directories
-!.config
-!.local
+!emacs/.config/.gitkeep
+!home/.gitkeep
+
+#
+# core .config
+#
+!core
+!core/**
 
 #
 # niri
 #
-!.config/niri
-!.config/niri/**
+!niri
+!niri/**
 
-!.config/waybar
-!.config/waybar/**
 
 #
-# config files
+# misc configure
 #
-!.config/mc
-!.config/mc/ini
-
-!.config/terminator
-!.config/terminator/**
-
-!.config/tmux
-!.config/tmux/**
-
-#
-# include executable files
-#
-!.local/bin
-!.local/bin/mtt-editor.sh
-
-# rest of config files
-!.local/trunk
-!.local/trunk/**
+!.config/mc-ini
+!.config/mc-ini/**
