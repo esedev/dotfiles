@@ -1,9 +1,32 @@
 * About
 A collection of GNU/linux configuration files.
+
 * Install
-+ Move repository to $HOME dir.
-#+begin_src shell
+clone this repo
+#+begin_src sh
+git clone git@github.com:esedev/dotfiles.git
+# or
+git clone https://github.com/esedev/dotfiles.git
 #+end_src
-+ TODO
-#+begin_src shell
+
+clone emacs config repo
+#+begin_src sh
+cd dotfiles/emacs/.config
+git clone git@github.com:esedev/.emacs.d.git
+mv .emacs.d emacs
+#+end_src
+
+clone home config to 'dotfiles/home'
+
+#+begin_src sh
+stow core
+stow home
+stow emacs
+#+end_src
+
+into file ~~/.bashrc~ add:
+#+begin_src bash
+if [ -f ~/.bash_aliases ]; then
+    . ~/.bash_aliases
+fi
 #+end_src
