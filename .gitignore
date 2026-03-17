@@ -3,7 +3,11 @@
 !README.org
 !.stowrc
 
+!emacs
+!emacs/.config
+emacs/.config/*
 !emacs/.config/.gitkeep
+!home
 !home/.gitkeep
 
 #
@@ -22,5 +26,5 @@
 #
 # misc configure
 #
-!.config/mc-ini
-!.config/mc-ini/**
+!mc-ini
+!mc-ini/**
